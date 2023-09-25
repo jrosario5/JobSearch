@@ -49,7 +49,7 @@ data = getData()
 batch_data = np.array_split(data, 500)
 for batch in batch_data:
     for _, row in batch.iterrows():
-        print(row['link'])
+        print(row['posted'])
         r = requests.get("https://builtin.com"+str(row['link']))
         
         if r.status_code!=200:
@@ -62,7 +62,7 @@ for batch in batch_data:
         insert = JobDesc(id=int(row['id']), description=desc, apply_link=link, datetime=datetime.now())
         session.add(insert)
         session.commit()
-        time.sleep(495+random.choice([10,5,22,38,15,16,7,13,18]))
+        time.sleep(405+random.choice([6,5,4,10,1,16,7,2,18, 0, 2]))
     
     time.sleep(3600)
 #print(batch_data)
